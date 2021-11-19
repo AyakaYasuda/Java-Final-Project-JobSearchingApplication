@@ -7,27 +7,24 @@
     
     <div class="container">
     
-    	<h3>Employees Directory</h3>
+    	<h3>Skill Projects Directory</h3>
     	<hr />
     	
-    	<a 
-    		th:href="@{/employees/new}"
-    		class="btn btn-primary btn-sm mb-3"
-    	>Add Employee</a>
+    	<a th:href="@{/projects/new}" class="btn btn-primary btn-sm mb-3">New Project</a>
     	
     	<table class="table table-bordered table-striped">
     		<thead class="thead-dark">
     			<tr>
-    				<th>Employee First Name</th>
-    				<th>Employee Last Name</th>
-    				<th>Employee Email</th>
+    				<th>Project Name</th>
+    				<th>Project Stage</th>
+    				<th>Description</th>
     			</tr>
     		</thead>
     		<tbody>
-    			<tr th:each="field: ${employeeList}">
-    				<td th:text="${field.firstName}"></td>
-    				<td th:text="${field.lastName}"></td>
-    				<td th:text="${field.email}"></td>
+    			<tr th:each="field: ${projectList}">
+    				<td th:text="${field.name}"></td>
+    				<td th:text="${field.stage}"></td>
+    				<td th:text="${field.description}"></td>
     			</tr>
     		</tbody>
     	</table>

@@ -24,7 +24,7 @@
     			<tr th:each="field: ${projectList}">
     				<td th:text="${field.name}"></td>
     				<td th:text="${field.stage}"></td>
-    				<td th:text="${field.description}"></td>
+    				<td><a th:href="@{/projects/skill/{testId}(testId=${field.description})}" th:text="${field.description}" /></td>
     			</tr>
     		</tbody>
     	</table>
