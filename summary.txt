@@ -1,0 +1,18 @@
+- What will the project do?
+	This is a searching job application, so it could create a job that you're interested as your future job,
+	and you can save, sort, update or delete it if you want.
+	
+- Who are the main users
+	The main users is job applicant.
+	
+- What kinds of problems will they solve with the system?
+	This system allows you to create your own list of job openings and sort them by skills, which resolves the problem of not knowing which companies are hiring for what skills and positions.
+
+- Will this be a GUI design? Why did you choose this modality
+	Yes, this will be GUI design. 
+	For this system, the most important thing was that it be simple and intuitive to operate.
+	Since we assume that many users will use this system on mobile devices, we have tried to make the button placement easy to understand even on small screens (shading, color change with hover).
+	
+- What are your basic design decisions? (color scheme, page layout, CSS design.)
+	Considering that our intended users are job seekers, we tried to use mature and intellectual colors and fonts in the design.
+	However, in order not to raise the psychological hurdle too high, we also used illustrations and other elements that would help the user to understand what the site is about.
