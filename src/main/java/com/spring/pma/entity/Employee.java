@@ -51,6 +51,9 @@ public class Employee {
 		return employeeId;
 	}
 
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

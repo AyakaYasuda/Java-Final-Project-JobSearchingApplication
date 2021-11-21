@@ -21,6 +21,8 @@
     				<th>Employee First Name</th>
     				<th>Employee Last Name</th>
     				<th>Employee Email</th>
+    				<th>Edit</th>
+    				<th>Delete</th>
     			</tr>
     		</thead>
     		<tbody>
@@ -28,6 +30,11 @@
     				<td th:text="${field.firstName}"></td>
     				<td th:text="${field.lastName}"></td>
     				<td th:text="${field.email}"></td>
+    					<td><a 
+    		th:href="@{/employees/edit/{id}(id=${field.employeeId})}"
+    		class="btn btn-primary btn-sm mb-3"
+    	>Edit Employee</a></td>
+    	<td><a th:href="@{/employees/delete/{id}(id=${field.employeeId})}" class="btn btn-primary btn-sm mb-3">Delete Employee</a></td>
     			</tr>
     		</tbody>
     	</table>
