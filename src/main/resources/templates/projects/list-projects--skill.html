@@ -7,7 +7,10 @@
     
     <div class="container">
     
-    	<h3>Projects Directory</h3>
+    	<h3>Skill Projects Directory</h3>
+    	<h4>Upsteam Push Test1</h4>
+    	<h4>Upsteam Push Test2</h4>
+    	<h4>Upsteam Push Test3</h4>
     	<hr />
     	
     	<a th:href="@{/projects/new}" class="btn btn-primary btn-sm mb-3">New Project</a>
@@ -24,7 +27,7 @@
     			<tr th:each="field: ${projectList}">
     				<td th:text="${field.name}"></td>
     				<td th:text="${field.stage}"></td>
-    				<td><a th:href="@{/projects/skill/{testId}(testId=${field.description})}" th:text="${field.description}" /></td>
+    				<td th:text="${field.description}"></td>
     			</tr>
     		</tbody>
     	</table>

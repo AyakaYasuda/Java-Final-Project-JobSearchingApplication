@@ -9,57 +9,50 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.pma.dao.iEmployeeRepository;
-import com.spring.pma.dao.iProjectRepository;
+import com.spring.pma.dao.iJobRepository;
 import com.spring.pma.entity.Employee;
+import com.spring.pma.entity.Job;
 import com.spring.pma.entity.Project;
 
 @Controller
-@RequestMapping("/projects")
-public class ProjectController {
+@RequestMapping("/jobs")
+public class JobController {
 	
 	@Autowired
-	iProjectRepository proRepo;
+	iJobRepository jobRepo;
 	
-	@Autowired
-	iEmployeeRepository empRepo;
-
 	@GetMapping
-	public String displayProjects(Model model) {
-		List<Project> projects = proRepo.findAll();
-		model.addAttribute("projectList", projects);
-		return "projects/list-projects";
+	public String displayJobs(Model model) {
+		List<Job> jobs = jobRepo.findAll();
+		model.addAttribute("jobList", jobs);
+		
+		return "jobs/list-jobs";
 	}
 	
 //	@RequestMapping("/new")
 	@GetMapping("/new")
 	public String displayProjectForm(Model model) {
-		List<Employee> employees = empRepo.findAll();
-		System.out.println(employees);
-		model.addAttribute("employeeList", employees);
-		
-		model.addAttribute("project", new Project());
-		return "projects/new-project";
+		model.addAttribute("job", new Job());
+		return "jobs/new-job";
 	}
-	
 	
 	@GetMapping("/skill/{skill}")
 	public String displayProjectsTests(Model model, @PathVariable("skill") String skill) {
 		System.out.println(skill);
-		List<Project> projects = proRepo.getProjectsWithTheSkill(skill);
-		model.addAttribute("projectList", projects);
-		return "projects/list-projects--skill";
+		List<Job> jobs = jobRepo.getJobsWithTheSkill(skill);
+		model.addAttribute("jobList", jobs);
+		return "jobs/list-jobs";
 	}
 	
 //	@RequestMapping(value="/save", method = RequestMethod.POST)
 	@PostMapping("/save")
-	public String createProject(Project project, Model model) {
+	public String createProject(Job job, Model model) {
 		//this should handle saving to the database
-		proRepo.save(project);
+		jobRepo.save(job);
 	
 		
-		return "redirect:/projects";
+		return "redirect:/jobs";
 	}
+
 }
