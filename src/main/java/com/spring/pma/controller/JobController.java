@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.pma.dao.iJobRepository;
+import com.spring.pma.entity.Employee;
 import com.spring.pma.entity.Job;
 import com.spring.pma.entity.Project;
 
@@ -28,12 +30,29 @@ public class JobController {
 		return "jobs/list-jobs";
 	}
 	
+//	@RequestMapping("/new")
+	@GetMapping("/new")
+	public String displayProjectForm(Model model) {
+		model.addAttribute("job", new Job());
+		return "jobs/new-job";
+	}
+	
 	@GetMapping("/skill/{skill}")
 	public String displayProjectsTests(Model model, @PathVariable("skill") String skill) {
 		System.out.println(skill);
 		List<Job> jobs = jobRepo.getJobsWithTheSkill(skill);
 		model.addAttribute("jobList", jobs);
 		return "jobs/list-jobs";
+	}
+	
+//	@RequestMapping(value="/save", method = RequestMethod.POST)
+	@PostMapping("/save")
+	public String createProject(Job job, Model model) {
+		//this should handle saving to the database
+		jobRepo.save(job);
+	
+		
+		return "redirect:/jobs";
 	}
 
 }
