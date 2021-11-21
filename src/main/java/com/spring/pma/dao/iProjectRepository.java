@@ -17,6 +17,12 @@ public interface iProjectRepository extends CrudRepository<Project, Long> {
 			+ "FROM project "
 			+ "GROUP BY stage;")
 	public List<ChartData> getProjectStatus();
+	
+	@Query(nativeQuery = true, value = "SELECT project_id, name, stage, description "
+			+ "FROM project "
+			+ "WHERE project.description = ?1 "			
+			+ ";")
+	public List<Project> getProjectsWithTheSkill(String skill);
 }
 
 
