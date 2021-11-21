@@ -22,7 +22,9 @@
     				<th>Company Name</th>
     				<th>Location</th>
     				<th>Description</th>
+    				<th>Edit</th>
     				<th>Skills</th>
+    				
     			</tr>
     		</thead>
     		<tbody>
@@ -31,6 +33,7 @@
     				<td th:text="${field.company}"></td>
     				<td th:text="${field.location}"></td>
     				<td th:text="${field.description}"></td>
+    				<td><a th:href="@{/jobs/edit/{id}(id=${field.jobId})}" class="btn btn-primary btn-sm mb-3">Edit Job</a></td>
     				<td><a th:href="@{/jobs/skill/{skillName}(skillName=${field.skill})}" th:text="${field.skill}" /></td>
     			</tr>
     		</tbody>
