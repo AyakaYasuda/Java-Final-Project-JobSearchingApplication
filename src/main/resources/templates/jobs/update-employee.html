@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layouts :: head"></head>
+  <body>
+  
+  	<nav th:replace="layouts :: navbar"></nav>
+    
+    <div class="container">
+    
+    	<form action="#" th:action="@{/employees/update/{id}(id=${employee.employeeId})}" method="POST" th:object="${employee}">
+    		<fieldset>
+    			<legend>Update Employee</legend>
+    			<hr class="mb-4" />
+    			<div class="mb-3">
+    				<label class="form-label">Employee First Name</label>
+	    			<input 
+	    				class="form-control" 
+	    				type="text" 
+	    				placeholder="Employee First Name"
+	    				th:field="*{firstName}"
+	    			/>
+    			</div>
+	    		
+	    		<div class="mb-3">	    		
+	    			<label class="form-label">Employee Last Name</label>
+	    			<input 
+	    				class="form-control" 
+	    				type="text" 
+	    				placeholder="Employee Last Name"
+	    				th:field="*{lastName}"
+	    			/>
+	    		</div>
+	    		
+	    		<div class="mb-3">
+	    			<label class="form-label">Employee Email</label>
+	    			<input 
+	    				class="form-control" 
+	    				type="email" 
+	    				placeholder="Employee Email"
+	    				th:field="*{email}"
+	    			/>
+	    		</div>
+	    		
+	    		<button class="btn btn-primary" type="submit">Update Employee</button>
+    		</fieldset>
+    		
+    	</form>
+    </div>
+    
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
+</html>

@@ -7,34 +7,24 @@
     
     <div class="container">
     
-    	<h3>Jobs Directory</h3>
+    	<h3>Projects Directory</h3>
     	<hr />
     	
-    	<a 
-    		th:href="@{/jobs/new}"
-    		class="btn btn-primary btn-sm mb-3"
-    	>Create new job</a>
+    	<a th:href="@{/projects/new}" class="btn btn-primary btn-sm mb-3">New Project</a>
     	
     	<table class="table table-bordered table-striped">
     		<thead class="thead-dark">
     			<tr>
-    				<th>Job Title</th>
-    				<th>Company Name</th>
-    				<th>Location</th>
+    				<th>Project Name</th>
+    				<th>Project Stage</th>
     				<th>Description</th>
-    				<th>Edit</th>
-    				<th>Skills</th>
-    				
     			</tr>
     		</thead>
     		<tbody>
-    			<tr th:each="field: ${jobList}">
-    				<td th:text="${field.title}"></td>
-    				<td th:text="${field.company}"></td>
-    				<td th:text="${field.location}"></td>
-    				<td th:text="${field.description}"></td>
-    				<td><a th:href="@{/jobs/edit/{id}(id=${field.jobId})}" class="btn btn-primary btn-sm mb-3">Edit Job</a></td>
-    				<td><a th:href="@{/jobs/skill/{skillName}(skillName=${field.skill})}" th:text="${field.skill}" /></td>
+    			<tr th:each="field: ${projectList}">
+    				<td th:text="${field.name}"></td>
+    				<td th:text="${field.stage}"></td>
+    				<td><a th:href="@{/projects/skill/{testId}(testId=${field.description})}" th:text="${field.description}" /></td>
     			</tr>
     		</tbody>
     	</table>

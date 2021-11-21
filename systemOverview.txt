@@ -1,0 +1,6 @@
+1- Click "Create new Job" button
+2- Enter the description of your job
+3- Save the information
+4- Sort your jobs with clicking the skills if you want
+5- Update your jobs with clicking "Update" button if you want
+6- Delete your jobs with clicking "Delete" button if you want

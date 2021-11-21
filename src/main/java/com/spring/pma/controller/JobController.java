@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +43,7 @@ public class JobController {
 		System.out.println(skill);
 		List<Job> jobs = jobRepo.getJobsWithTheSkill(skill);
 		model.addAttribute("jobList", jobs);
-		return "jobs/list-jobs";
+		return "jobs/list-jobs--skill";
 	}
 	
 //	@RequestMapping(value="/save", method = RequestMethod.POST)
@@ -54,5 +55,41 @@ public class JobController {
 		
 		return "redirect:/jobs";
 	}
+	
+
+	@GetMapping("/edit/{id}")
+	public String showUpdateForm(Model model, @PathVariable("id") long id) {
+		Job job = jobRepo.findById(id)
+	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+		model.addAttribute("job", job);
+	    return "jobs/update-job";
+	}
+
+	@PostMapping("/update/{id}")
+//	public String updateEmployee(@PathVariable("id") Long id, @Valid Job jobs, 
+//	  BindingResult result, Model model) {
+		public String updateEmployee(Job job, Model model, @PathVariable("id") long id) {
+	    
+		Job oldjob = jobRepo.findById(id)
+			      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+		jobRepo.delete(oldjob);
+		
+		job.setJobId(id);
+		jobRepo.save(job);
+	    
+	    model.addAttribute("jobs", jobRepo.findAll());
+	    
+		return "redirect:/jobs";
+	}
+	
+
+	
+//	@GetMapping("/delete/{id}")
+//	public String deleteUser(@PathVariable("id") long id, Model model) {
+//		Employee employee = empRepo.findById(id)
+//	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+//		empRepo.delete(employee);
+//	    return "redirect:/employees";
+//	}
 
 }
