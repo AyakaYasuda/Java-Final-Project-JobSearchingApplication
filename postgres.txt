@@ -8,5 +8,10 @@ description VARCHAR(500) NOT NULL,
 skill VARCHAR(100) NOT NULL
 );
 
+
 INSERT INTO job (job_id, title, company, location, description, skill) 
 VALUES (nextval('job_seq'), 'Junior front-end developer', 'Test Company', 'Vancouver', 'test description', 'React');
+INSERT INTO job (job_id, title, company, location, description, skill) 
+VALUES (nextval('job_seq'), 'Junior front-end developer', 'Test Company', 'Vancouver', 'test description', 'React');
+INSERT INTO job (job_id, title, company, location, description, skill) 
+VALUES (nextval('job_seq'), 'Junior front-end developer', 'Test Company', 'Vancouver', 'test description', 'JavaScript');
