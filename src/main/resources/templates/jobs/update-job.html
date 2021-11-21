@@ -7,7 +7,8 @@
     
     <div class="container">
     
-    	<form action="#" th:action="@{/job/update/{id}(id=${jobs.jobId})}" method="POST" th:object="${job}">
+
+    	<form action="#" th:action="@{/jobs/update/{id}(id=${job.jobId})}" method="POST" th:object="${job}">
     		<fieldset>
     			<legend>Update Job</legend>
     			<hr class="mb-4" />

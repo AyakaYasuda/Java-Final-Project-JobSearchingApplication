@@ -43,7 +43,7 @@ public class JobController {
 		System.out.println(skill);
 		List<Job> jobs = jobRepo.getJobsWithTheSkill(skill);
 		model.addAttribute("jobList", jobs);
-		return "jobs/list-jobs";
+		return "jobs/list-jobs--skill";
 	}
 	
 //	@RequestMapping(value="/save", method = RequestMethod.POST)
@@ -58,34 +58,28 @@ public class JobController {
 	
 
 	@GetMapping("/edit/{id}")
-	public String showUpdateForm(@PathVariable("id") long id, Model model) {
-		Job jobs = jobRepo.findById(id)
+	public String showUpdateForm(Model model, @PathVariable("id") long id) {
+		Job job = jobRepo.findById(id)
 	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-	    
-	    model.addAttribute("jobs", jobs);
+		model.addAttribute("job", job);
 	    return "jobs/update-job";
 	}
 
 	@PostMapping("/update/{id}")
-	public String updateEmployee(@PathVariable("id") long id, @Valid Job jobs, 
-	  BindingResult result, Model model) {
-	    if (result.hasErrors()) {
-	    	jobs.setJobId(id);
-	        return "jobs/update-job";
-	    }
+//	public String updateEmployee(@PathVariable("id") Long id, @Valid Job jobs, 
+//	  BindingResult result, Model model) {
+		public String updateEmployee(Job job, Model model, @PathVariable("id") long id) {
+	    
 		Job oldjob = jobRepo.findById(id)
 			      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 		jobRepo.delete(oldjob);
-		jobRepo.save(jobs);
 		
-//		Employee newEmp = new Employee();
-//	    newEmp.setFirstName("firstName");
-//	    newEmp.setLastName("lastName");
-//	    newEmp.setEmail("email");
-//	    empRepo.save(newEmp);
+		job.setJobId(id);
+		jobRepo.save(job);
 	    
 	    model.addAttribute("jobs", jobRepo.findAll());
-	    return "redirect:/jobs";
+	    
+		return "redirect:/jobs";
 	}
 	
 

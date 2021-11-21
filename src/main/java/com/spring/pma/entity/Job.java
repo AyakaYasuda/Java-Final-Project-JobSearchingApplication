@@ -35,7 +35,7 @@ public class Job {
 	public long getJobId() {
 		return jobId;
 	}
-	public void setJobId(Long jobId) {
+	public void setJobId(long jobId) {
 		this.jobId = jobId;
 	}
 
