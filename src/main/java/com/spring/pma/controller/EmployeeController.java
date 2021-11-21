@@ -43,22 +43,68 @@ public class EmployeeController {
 		empRepo.save(employee);
 		return "redirect:/employees";
 	}
-	
-	
-	@GetMapping("/update/{id}")
-	public String showUpdateForm(@PathVariable("id") String id, Model model) {
-		Long longId = Long.parseLong(id);
-	    Employee em = empRepo.findById (longId)
-	      .orElseThrow(() -> new IllegalArgumentException("Invalid employee Id:" + id));
-	    model.addAttribute(em);
+
+	@GetMapping("/edit/{id}")
+	public String showUpdateForm(@PathVariable("id") long id, Model model) {
+		Employee employee = empRepo.findById(id)
+	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+	    
+	    model.addAttribute("employee", employee);
 	    return "employees/update-employee";
 	}
+
+	@PostMapping("/update/{id}")
+	public String updateEmployee(@PathVariable("id") long id, @Valid Employee employee, 
+	  BindingResult result, Model model) {
+	    if (result.hasErrors()) {
+	    	employee.setEmployeeId(id);
+	        return "employees/update-employee";
+	    }
+		Employee oldEmp = empRepo.findById(id)
+			      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+		empRepo.delete(oldEmp);
+		empRepo.save(employee);
+		
+//		Employee newEmp = new Employee();
+//	    newEmp.setFirstName("firstName");
+//	    newEmp.setLastName("lastName");
+//	    newEmp.setEmail("email");
+//	    empRepo.save(newEmp);
+	    
+	    model.addAttribute("employees", empRepo.findAll());
+	    return "redirect:/employees";
+	}
 	
-//	@PostMapping("/save")
-//	public String createEmployee(Employee employee, Model model) {
-//		empRepo.save(employee);
+
+	
+	@GetMapping("/delete/{id}")
+	public String deleteUser(@PathVariable("id") long id, Model model) {
+		Employee employee = empRepo.findById(id)
+	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+		empRepo.delete(employee);
+	    return "redirect:/employees";
+	}
+	
+	
+
+
+    
+	
+//	@GetMapping("/update/{id}")
+//	public String showUpdateForm(@PathVariable("id") String id, Model model) {
+//		Long longId = Long.parseLong(id);
+//	    Employee em = empRepo.findById (longId)
+//	      .orElseThrow(() -> new IllegalArgumentException("Invalid employee Id:" + id));
+//	    model.addAttribute(em);
+//	    return "employees/update-employee";
+//	}
+//	
+//	@PostMapping("/update")
+//	public String updateEmployee(Employee employee, Model model) {
+//		empRepo.updateEmployee(employee.getEmployeeId(),employee.getFirstName(),employee.getFirstName(),employee.getFirstName());
 //		return "redirect:/employees";
 //	}
+	
 //	@PutMapping("/employees/update")
 //	public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employee_id,
 //	          @RequestBody Employee employeeDetails){
