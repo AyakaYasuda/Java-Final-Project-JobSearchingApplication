@@ -31,7 +31,7 @@
     				<td th:text="${field.company}"></td>
     				<td th:text="${field.location}"></td>
     				<td th:text="${field.description}"></td>
-    				<td th:text="${field.skill}"></td>
+    				<td><a th:href="@{/jobs/skill/{skillName}(skillName=${field.skill})}" th:text="${field.skill}" /></td>
     			</tr>
     		</tbody>
     	</table>
