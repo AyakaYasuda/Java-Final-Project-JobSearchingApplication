@@ -3,7 +3,10 @@
   <head th:replace="layouts :: head"></head>
   <body>
   
-  	<nav th:replace="layouts :: navbar"></nav>
+  	<nav class="l-nav">
+    	<a class="nav-link c-home-btn" href="/">HOME</a>
+    	<a class="nav-link c-list-btn" href="/jobs">LIST</a>
+    </nav >
     
     <div class="container">
     
@@ -41,7 +44,7 @@
 	    			/>
 	    		</div>
 	    		
-	    		<button class="btn btn-primary" type="submit">Update Employee</button>
+	    		<button class="btn btn-primary new-btn" type="submit">Update Employee</button>
     		</fieldset>
     		
     	</form>
