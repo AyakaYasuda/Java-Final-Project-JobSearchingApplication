@@ -2,10 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="layouts :: head"></head>
   <body>
-    <nav th:replace="layouts :: navbar"></nav>
+  
+  	<nav class="l-nav">
+    	<a class="nav-link c-home-btn" href="/">HOME</a>
+    	<a class="nav-link c-list-btn" href="/jobs">LIST</a>
+    </nav >
 
     <div class="container">
-      <h3>Jobs Directory</h3>
+      <h3>Jobs List</h3>
       <hr />
 
       <a th:href="@{/jobs/new}" class="btn btn-primary btn-sm mb-3"

@@ -3,7 +3,10 @@
   <head th:replace="layouts :: head"></head>
   <body>
   
-  <nav th:replace="layouts :: navbar"></nav>
+  	<nav class="l-nav">
+    	<a class="nav-link c-home-btn" href="/">HOME</a>
+    	<a class="nav-link c-list-btn" href="/jobs">LIST</a>
+    </nav >
   
 	<div class="container">
 	
@@ -38,7 +41,7 @@
 					<option th:value="JavaScript"> JavaScript</option>
 				</select>
 			  </div>
-			  <button type="submit" class="btn btn-primary">Create Job</button>
+			  <button type="submit" class="btn btn-primary new-btn">Create Job</button>
 			</fieldset>
 		</form>
 	</div>

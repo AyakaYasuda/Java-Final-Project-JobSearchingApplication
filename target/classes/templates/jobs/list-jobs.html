@@ -3,27 +3,32 @@
   <head th:replace="layouts :: head"></head>
   <body>
   
-  	<nav th:replace="layouts :: navbar"></nav>
+  	
+  	<nav class="l-nav">
+    	<a class="nav-link c-home-btn" href="/">HOME</a>
+    	<a class="nav-link c-list-btn" href="/jobs">LIST</a>
+    </nav >
+    
     
     <div class="container">
     
-    	<h3>Jobs Directory</h3>
+    	<h3>Jobs List</h3>
     	<hr />
     	
     	<a 
     		th:href="@{/jobs/new}"
-    		class="btn btn-primary btn-sm mb-3"
+    		class="btn btn-primary btn-sm mb-3 new-btn"
     	>Create new job</a>
     	
-    	<table class="table table-bordered table-striped">
+    	<table class="table table-bordered table-striped table-style">
     		<thead class="thead-dark">
     			<tr>
     				<th>Job Title</th>
     				<th>Company Name</th>
     				<th>Location</th>
     				<th>Description</th>
-    				<th>Edit</th>
     				<th>Skills</th>
+    				<th>Edit</th>
     				
     			</tr>
     		</thead>
@@ -33,8 +38,8 @@
     				<td th:text="${field.company}"></td>
     				<td th:text="${field.location}"></td>
     				<td th:text="${field.description}"></td>
-    				<td><a th:href="@{/jobs/edit/{id}(id=${field.jobId})}" class="btn btn-primary btn-sm mb-3">Edit Job</a></td>
     				<td><a th:href="@{/jobs/skill/{skillName}(skillName=${field.skill})}" th:text="${field.skill}" /></td>
+    				<td><a th:href="@{/jobs/edit/{id}(id=${field.jobId})}" class="btn btn-primary btn-sm mb-3 edit-btn">Edit Job</a></td>
     			</tr>
     		</tbody>
     	</table>
