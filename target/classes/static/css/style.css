@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+body {
+	background-color: #264653;
+    color: white;
+   	font-family: 'Montserrat', sans-serif;
+}
+
+.l-nav {
+	padding: 20px 0 15px 30px;
+}
+
+.container {
+	padding: 20px;
+}
+
+.home-container {
+	padding: 100px 0 0 0;
+	text-align: center;	
+}
+
+input[type="text"]:focus {
+  outline: 0;
+}
+
+form {
+	margin-bottom: 30px;
+}
+
+.l-head__title,
+.l-head__pic,
+.l-head__intro {
+	margin-bottom: 50px;
+}
+
+.l-head__title {
+	font-size: 40px;
+}
+
+.l-head__intro {
+	font-size: 33px;
+}
+
+.l-head__pic img {
+	width: 180px;
+}
+
+.l-btn {
+	width: 300px;
+	margin: 0 auto;
+	background-color: #e9c46a;
+  	font-size: 20px;
+  	font-weight: bold;
+ 	padding: 25px;
+ 	box-shadow: 0 5px 0 #333;
+  	border-radius: 50px;
+  	display: inline-block;
+  	transition: .3s;
+}
+
+.l-btn:hover {
+  transform: translateY(5px);
+  box-shadow: 0 0 0 #333;
+}
+
+.l-btn a {
+	color: white;
+	text-decoration: none;
+}
+
+.c-home-btn {
+	background-color: #e9c46a;
+}
+
+.c-list-btn {
+	background-color: #e76f51;
+	margin-left: 20px;
+}
+
+.c-home-btn,
+.c-list-btn {
+	width:100px;
+	height:100px;
+	object-fit:cover;
+	border-radius: 50%;
+ 	box-shadow: 0 5px 0 #333;
+  	display: inline-block;
+  	transition: .3s;
+  	line-height: 87px;
+  	text-align: center;
+  	font-size: 20px;
+  	color: white;
+}
+
+.c-home-btn:hover,
+.c-list-btn:hover {
+  transform: translateY(5px);
+  box-shadow: 0 0 0 #333;
+}
+
+.container h3 {
+	text-align: center;
+}
+
+.table-style {
+	background-color: white;
+}
+
+.new-btn,
+.edit-btn {
+	border: #2a9d8f;
+	background-color: #2a9d8f;
+}
+
+.new-btn:hover,
+.edit-btn {
+	opacity: 0.8;
+}
