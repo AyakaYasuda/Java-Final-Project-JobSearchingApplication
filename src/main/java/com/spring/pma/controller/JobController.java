@@ -84,12 +84,13 @@ public class JobController {
 	
 
 	
-//	@GetMapping("/delete/{id}")
-//	public String deleteUser(@PathVariable("id") long id, Model model) {
-//		Employee employee = empRepo.findById(id)
-//	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-//		empRepo.delete(employee);
-//	    return "redirect:/employees";
-//	}
+	@GetMapping("/delete/{id}")
+	public String deleteUser(@PathVariable("id") long id, Model model) {
+		Job jobToDelete = jobRepo.findById(id)
+	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+		jobRepo.delete(jobToDelete);
+	    return "redirect:/jobs";
+	}
+	
 
 }
